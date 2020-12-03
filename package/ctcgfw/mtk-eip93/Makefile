@@ -13,7 +13,8 @@ PKG_RELEASE:=1.2
 
 PKG_SOURCE_URL:=https://github.com/vschagen/mtk-eip93.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=ae6492aba2388de54afa52700fcc21c3a6e6f1ad
+PKG_SOURCE_VERSION:=c00b70e0d33d544da7d6e27080e2a3c4f57b9bee
+PKG_MIRROR_HASH:=skip
 
 MAKE_PATH:=src
 
@@ -26,11 +27,12 @@ define KernelPackage/crypto-hw-eip93
   DEPENDS:= \
 	@TARGET_ramips_mt7621 \
 	+kmod-crypto-authenc \
+	+kmod-crypto-cbc \
 	+kmod-crypto-des \
+	+kmod-crypto-gcm \
 	+kmod-crypto-md5 \
 	+kmod-crypto-sha1 \
-	+kmod-crypto-sha256 \
-	@LINUX_5_4
+	+kmod-crypto-sha256
   KCONFIG:=
   TITLE:=MTK EIP93 crypto module.
   FILES:=$(PKG_BUILD_DIR)/src/crypto-hw-eip93.ko
